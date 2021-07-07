@@ -1,6 +1,23 @@
-# openfisca-djangoapi
+# openfisca-djangoapi-template
 
-A database and Django webserver layer for serving OpenFisca rulesets
+This is a template for a database and Django webserver layer for serving OpenFisca variables.
+
+## Use Cases
+
+
+
+## Features
+
+#### Serving OpenFisca Variables
+
+
+#### Visualisation of Variables Interdependency
+
+
+#### Calculation API for variables with formulae
+
+
+
 
 ## Serving Locally and Deploying
 
