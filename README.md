@@ -4,23 +4,27 @@ This is a template for a database and Django webserver layer for serving OpenFis
 
 
 ## Use Cases & Features
+
 We import variables from an Openfisca Web API to the database and improve on the readability of the variables, link and display the dependencies of each variable. 
 
 
 
 #### Monitor OpenFisca Variables and their dependencies
+
 There are two visualisation tools that could be useful for monitoring the variables in the database.
 
-**1. displaying all variables**
+1) Displaying all variables
+
 We summarise all variables in the database by a bar chart arranged by their total number of dependencies, i.e. the number of children (those variables needed to compute this variable) and the number of parents (i.e. variables depending on this variable)
 
-   `</plots/id>` gives this arranges the barchart by variable name (id) and 
-   `</plots/alias>` provides an alternative by a more readable form of variable name, i.e. after removing the undersores.
+   - `/plots/id` gives this arranges the barchart by variable name (id) and 
+   - `/plots/alias` provides an alternative by a more readable form of variable name, i.e. after removing the undersores.
 
-**2. displaying the dependency graph of a variable**
+2) Displaying the dependency graph of a variable
+
 For each variable, one can display the entire dependency graph by searching through children by multiple depth. We further annotated the type of node in the graph by whether it is an input variable (i.e. requiring user input) or output variable (i.e. no parents) or intermediate variables (i.e. with both parents and children)
     
- `</plots/graph/<var:id>>` gives such a dependency graph of a variable with `<var:id>`
+   - `/plots/graph/<var:id>` gives such a dependency graph of a variable with `<var:id>`
 
 
 
@@ -32,19 +36,23 @@ This database is ideal in further annotating the variables (e.g. making them mor
 Here we have annotated each variable using a metadata tag.  You can download this version of Openfisca Core to enable this function in your OpenFisca Repo directly. [Reference Github Openfisca core metadata tag version](http://github.com/..) #TODO
 
 
-Here is an example of a metadata tag, consisting of three attributes, they are `<variable-type>`, depending on the number of children and parents, it is one of input, output or intermediary type;  `<alias>`, which is derived from the variable name by removing underscores; `<input_offspring>`, that is a list of all input dependencies, can be conveniently rendered in an UI for user input. 
+Here is an example of a metadata tag, consisting of three attributes, they are `"variable-type"`, depending on the number of children and parents, it is one of input, output or intermediary type;  `"alias"`, which is derived from the variable name by removing underscores; `"input_offspring"`, that is a list of all input dependencies, can be conveniently rendered in an UI for user input. 
 
 ```
-    "metadata": {
+   "metadata": {
             "variable-type": "output",
             "alias": "Maternity Benefits Is Eligible For Maternity Benefit",
             "input_offspring": [
-                "maternity_benefits__weeks_after_birth_of_child",
-                "maternity_benefits__weeks_to_due_date"
+               "maternity_benefits__weeks_after_birth_of_child",
+               "maternity_benefits__weeks_to_due_date"
             ]
-        },
+      },
 ```
 This is automatically generated based on input variables from OpenFisca Web API. These are then used in the visualisation component. 
+
+   - Get request at `/variables` returns the list of all variables with all variable details.
+   - Get request at `/variables/<var:id>` returns the detail of the variable with `<var:id>`.
+   - Get request at `/variables/<var:id>/children` returns the complete dependency tree of the variable with `<var:id>` all the way down.
 
 
 
