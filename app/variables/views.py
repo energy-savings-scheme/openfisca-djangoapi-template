@@ -60,37 +60,7 @@ class VariablesList(generics.ListAPIView):
                     num_children=0
                 )
 
-        if majorCat is not None:
-            query_set = query_set.filter(metadata__majorCat=majorCat)
-
-        if minorCat is not None:
-            query_set = query_set.filter(metadata__minorCat=minorCat)
-
-        if schedule is not None:
-            query_set = query_set.filter(
-                Q(
-                    metadata__regulation_reference__part__part_type="Schedule",
-                    metadata__regulation_reference__part__identifier=schedule,
-                )
-                | Q(
-                    metadata__regulation_reference__part__part__part_type="Schedule",
-                    metadata__regulation_reference__part__part__identifier=schedule,
-                )
-            )
-
-        if activity is not None:
-            query_set = query_set.filter(
-                Q(
-                    metadata__regulation_reference__part__part__part_type="Activity Definition",
-                    metadata__regulation_reference__part__part__identifier=activity,
-                )
-                | Q(
-                    metadata__regulation_reference__part__part_type="Activity Definition",
-                    metadata__regulation_reference__part__identifier=activity,
-                )
-            )
-
-        # print(query_set.count())
+   
         return query_set
 
     filter_backends = [filters.SearchFilter]
