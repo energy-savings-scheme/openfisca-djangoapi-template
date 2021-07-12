@@ -15,7 +15,6 @@ from django.core.management.base import BaseCommand, CommandError
 
 from entities.models import Entity
 from variables.models import Variable
-from activities.views import BuildActivityTable
 from variables import metadata
 
 

@@ -35,10 +35,6 @@ urlpatterns = [
     path("variables/", include(("variables.urls", "variables"), namespace="variables")),
     url(r"^admin/", admin.site.urls),
     path("plots/", include(("plots.urls", "plots"), namespace="plots")),
-    path(
-        "activities/",
-        include(("activities.urls", "activities"), namespace="activities"),
-    ),
     # SWAGGER PATHS
     path(
         "",
