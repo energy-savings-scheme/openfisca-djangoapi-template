@@ -2,16 +2,17 @@
 
 This is a template for a database and Django webserver layer for serving OpenFisca variables.
 
-## Use Cases
 
 
+## Use Cases & Features
 
-## Features
+#### Increasing Readability of OpenFisca Variables
 
-#### Serving OpenFisca Variables
+#### Serving OpenFisca Variables & Query by name and description
 
 
-#### Visualisation of Variables Interdependency
+#### Visualisation of Variables and their dependencies
+
 
 
 #### Calculation API for variables with formulae

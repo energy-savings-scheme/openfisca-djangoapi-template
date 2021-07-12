@@ -47,7 +47,7 @@ def NetworkGraph_shortest(request, var_id):
 
     # URL parameter (required)
     The following url parameter must be specified
-    - variable_name [str]: e.g. "/shortest/<variable_name>
+    - variable_name [str]: e.g. "/graph/<variable_name>
 
     """
     context = {'plot': network_graph(var_id, layout='shortest')}

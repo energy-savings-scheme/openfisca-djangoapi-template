@@ -23,11 +23,7 @@ def get_variable_graph(var_id, G):
     try:
         variable = Variable.objects.get(name=var_id)
         var_type = variable.metadata['variable-type']
-        aliasList = variable.metadata['alias'].split(" ")
-        if (len(aliasList) >= 5):
-            alias = " ".join(aliasList[0:5])
-        else:
-            alias = variable.metadata['alias']
+        alias = variable.metadata['alias']
         G.add_node(var_id, type=var_type, alias=alias)
 
         if (variable.children.count() != 0):
@@ -96,10 +92,6 @@ def display_pos(G, layout='shortest'):
 def graph(var_id, G, layout="shortest"):
     # summary info on the network
     main_node = G.nodes[var_id]['alias']
-
-    # node_list = list(G.nodes)
-    # edge_list = list(G.edges)
-
     pos = display_pos(G, layout)
 
     var_id_x, var_id_y = pos[var_id]
@@ -181,15 +173,13 @@ def graph(var_id, G, layout="shortest"):
     layout = go.Layout(
         title=f'{main_node}\n' f'({node_size_total} nodes & {edge_size_total} edges)',
         height=900,
-        width=1200,
+        width=1100,
         showlegend=False,
-        paper_bgcolor=colorScheme['background_color'],
         plot_bgcolor=colorScheme['background_color'],
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
     )
 
-    # TODO: show direction (through color of edges?)
 
     fig = go.Figure(data=[edge_trace, node_trace,
                           var_id_trace], layout=layout)

@@ -84,7 +84,6 @@ def varIDBarChart(name='id'):
             dtick=1,
             tick0=0,
         ),
-        paper_bgcolor=colorScheme['background_color'],
         plot_bgcolor=colorScheme['background_color'],
         title=f"There are {len(var_names)} variables in the database."
     )
