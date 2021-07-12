@@ -32,11 +32,7 @@ This database is ideal in further annotating the variables (e.g. making them mor
 Here we have annotated each variable using a metadata tag.  You can download this version of Openfisca Core to enable this function in your OpenFisca Repo directly. [Reference Github Openfisca core metadata tag version](http://github.com/..) #TODO
 
 
-Here is an example of a metadata tag, consisting of three attributes.
-   
-   `<variable-type>`: depending on the number of children and parents, it is one of input, output or intermediary type 
-   `<alias>` : derived from the variable name by removing underscores
-   `<input_offspring>`: a list of all input dependencies, can be rendered in an UI for user input. 
+Here is an example of a metadata tag, consisting of three attributes, they are `<variable-type>`, depending on the number of children and parents, it is one of input, output or intermediary type;  `<alias>`, which is derived from the variable name by removing underscores; `<input_offspring>`, that is a list of all input dependencies, can be conveniently rendered in an UI for user input. 
 
 ```
     "metadata": {
