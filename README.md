@@ -3,8 +3,7 @@
 This is a template for a database and Django webserver layer for serving OpenFisca variables.
 
 
-## Use Cases 
-
+## Use Cases & Features
 We import variables from an Openfisca Web API to the database and improve on the readability of the variables, link and display the dependencies of each variable. 
 
 
@@ -32,16 +31,19 @@ This database is ideal in further annotating the variables (e.g. making them mor
 Here we have annotated each variable using a metadata tag.  You can download this version of Openfisca Core to enable this function in your OpenFisca Repo directly. [Reference Github Openfisca core metadata tag version](http://github.com/..) #TODO
 
 
-Here is an example of a metadata tag with the `<variable-type>` (one of input, output or intermediary), `<alias>` derived from the variable name, as well as `<input_offspring>`, which is a list of all input dependencies to be rendered in an UI for user input. 
+Here is an example of a metadata tag, consisting of three attributes.
+   `<variable-type>`: depending on the number of children and parents, it is one of input, output or intermediary type 
+   `<alias>` : derived from the variable name by removing underscores
+   `<input_offspring>`: a list of all input dependencies, can be rendered in an UI for user input. 
 
->    "metadata": {
-            "variable-type": "output",
-            "alias": "Maternity Benefits Is Eligible For Maternity Benefit",
-            "input_offspring": [
-                "maternity_benefits__weeks_after_birth_of_child",
-                "maternity_benefits__weeks_to_due_date"
-            ]
-        },
+ >   "metadata": {
+ >           "variable-type": "output",
+ >           "alias": "Maternity Benefits Is Eligible For Maternity Benefit",
+ >           "input_offspring": [
+ >               "maternity_benefits__weeks_after_birth_of_child",
+ >               "maternity_benefits__weeks_to_due_date"
+ >           ]
+ >       },
 
 This is automatically generated based on input variables from OpenFisca Web API. These are then used in the visualisation component. 
 
