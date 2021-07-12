@@ -163,10 +163,6 @@ class Command(BaseCommand):
                 obj.possible_values = data.get("possibleValues")
                 obj.value_type = data.get("valueType")
 
-                # experiment to get a directory tree
-                directory = data.get("source").split("#")[0].split("/")
-                directory_index = directory.index('variables')
-                obj.directory = "/".join(directory[directory_index:])
 
                 # Link this Variable object to an Entity object according to the entity `name` attribute
                 try:
@@ -201,33 +197,21 @@ class Command(BaseCommand):
                 )
             )
 
-            # ----------------------------------------
-            # Build Activity Table
-            # ----------------------------------------
-            BuildActivityTable()
-            # ----------------------------------------
-            # Find all parents relations
-            # TODO: Skip when parents are already present
-            # ----------------------------------------
+     
 
             # Set 'parents' field for all objects
             for entry in Variable.objects.all():
-                # TODO: only update parents when it is absent. (with value None)
                 entry.parents.set(entry.parent_set.all())
                 entry.save()
 
             for entry in Variable.objects.all():
-                # `metadata.get_input_offsprings` requires every Variable to have an alias ...
-                # so we'll just add a placeholder alias if none already exists.
-                # TODO - make `metadata.get_input_offsprings` less reliant on a particular metadata structure
-                if entry.metadata.get("alias") is None:
-                    entry.metadata["alias"] = metadata.makeAlias(entry.name)
-                    entry.save()
                 metadata.variableType(entry)
-
+                metadata.makeAlias(entry)
+                
             # needs to have variableType updated first
             for entry in Variable.objects.all():
                 metadata.get_input_offsprings(entry)
+
 
         except CommandError as error:
             self.stdout.write(

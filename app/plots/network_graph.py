@@ -8,9 +8,7 @@ from networkx.algorithms.shortest_paths.unweighted import single_source_shortest
 import itertools
 from plots.plots import colorScheme
 
-# TODO: just a thought: can I pull all variables into a graph instead. Is it even possible? There would be clusters, which could be the automatic categories. i.e. we categorise by dependencies instead of guessing through var names and description.
 
-# TODO: check if I am using it the right way, particularly trying to get variable data
 Variable.objects.all().prefetch_related('children')
 
 
