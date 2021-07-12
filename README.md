@@ -36,15 +36,16 @@ Here is an example of a metadata tag, consisting of three attributes.
    `<alias>` : derived from the variable name by removing underscores
    `<input_offspring>`: a list of all input dependencies, can be rendered in an UI for user input. 
 
- >   "metadata": {
- >           "variable-type": "output",
- >           "alias": "Maternity Benefits Is Eligible For Maternity Benefit",
- >           "input_offspring": [
- >               "maternity_benefits__weeks_after_birth_of_child",
- >               "maternity_benefits__weeks_to_due_date"
- >           ]
- >       },
-
+```
+    "metadata": {
+            "variable-type": "output",
+            "alias": "Maternity Benefits Is Eligible For Maternity Benefit",
+            "input_offspring": [
+                "maternity_benefits__weeks_after_birth_of_child",
+                "maternity_benefits__weeks_to_due_date"
+            ]
+        },
+```
 This is automatically generated based on input variables from OpenFisca Web API. These are then used in the visualisation component. 
 
 
