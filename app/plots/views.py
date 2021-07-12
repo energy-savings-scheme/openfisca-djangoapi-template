@@ -1,24 +1,40 @@
-from plots.plots import varIDBarChart, variable_directory
+from plots.plots import varIDBarChart
 from plots.network_graph import network_graph
 from django.shortcuts import render
 
 
 def BarChart_id(request):
+    """
+    # GET a bar chart of all variables in the database
+
+    # Returns
+    - html bar chart of all variables sorted by variable ids.
+
+    # NO URL parameter 
+    - "/plots/id"
+
+    """
     context = {'plot': varIDBarChart('id')}
     response = render(request, 'plots/barchart.html', context)
     return response
 
 
 def BarChart_alias(request):
+    """
+    # GET a bar chart of all variables in the database
+
+    # Returns
+    - html bar chart of all variables sorted by variable alias for more readability.
+
+    # NO URL parameter 
+    - "/plots/alias"
+
+    """
     context = {'plot': varIDBarChart('alias')}
     response = render(request, 'plots/barchart.html', context)
     return response
 
 
-def Directory_Map(request):
-    context = {'plot': variable_directory()}
-    response = render(request, 'plots/barchart.html', context)
-    return response
 
 
 def NetworkGraph_shortest(request, var_id):
