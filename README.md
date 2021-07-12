@@ -19,7 +19,8 @@ We summarise all variables in the database by a bar chart arranged by their tota
 
 **2. displaying the dependency graph of a variable**
 For each variable, one can display the entire dependency graph by searching through children by multiple depth. We further annotated the type of node in the graph by whether it is an input variable (i.e. requiring user input) or output variable (i.e. no parents) or intermediate variables (i.e. with both parents and children)
-    `</plots/graph/<var:id>>` gives such a dependency graph of a variable with `<var:id>`
+    
+ `</plots/graph/<var:id>>` gives such a dependency graph of a variable with `<var:id>`
 
 
 
@@ -32,6 +33,7 @@ Here we have annotated each variable using a metadata tag.  You can download thi
 
 
 Here is an example of a metadata tag, consisting of three attributes.
+   
    `<variable-type>`: depending on the number of children and parents, it is one of input, output or intermediary type 
    `<alias>` : derived from the variable name by removing underscores
    `<input_offspring>`: a list of all input dependencies, can be rendered in an UI for user input. 
