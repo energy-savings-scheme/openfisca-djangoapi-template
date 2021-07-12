@@ -22,8 +22,7 @@ class VariablesList(generics.ListAPIView):
     - search [str]: e.g "/variables?search=abc"
     - is_output [bool]: e.g. "/variables?is_output=true"
     - is_input [bool]: e.g. "/variables?is_input=true"
-    - majorcat [str]: e.g "/variables?majorcat=E"
-    - minorcat [str]: e.g "/variables?minorcat=E1"
+
 
     Multiple queries can be combined with "&" (for example: "/variables?search=abc&is_final=true")
 
