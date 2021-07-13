@@ -15,7 +15,7 @@ def BarChart_id(request):
 
     """
     context = {'plot': varIDBarChart('id')}
-    response = render(request, 'plots/barchart.html', context)
+    response = render(request, 'plots/plot_template.html', context)
     return response
 
 
@@ -31,7 +31,7 @@ def BarChart_alias(request):
 
     """
     context = {'plot': varIDBarChart('alias')}
-    response = render(request, 'plots/barchart.html', context)
+    response = render(request, 'plots/plot_template.html', context)
     return response
 
 
@@ -51,5 +51,5 @@ def NetworkGraph_shortest(request, var_id):
 
     """
     context = {'plot': network_graph(var_id, layout='shortest')}
-    response = render(request, 'plots/barchart.html', context)
+    response = render(request, 'plots/plot_template.html', context)
     return response
