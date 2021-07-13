@@ -58,6 +58,22 @@ This is automatically generated based on input variables from OpenFisca Web API.
 
 #### Calculation API for variables with formulae
 
+We can create REST-ful API endpoints for performing OpenFisca calculations. This feature automatically checks which inputs fields are required, and creates a Django serializer to parse and validate the `POST` data. The `POST` data will automatically be validated, and if invalid, human-readable error messages will be returned.
+
+To instantiate a new calculation endpoint, follow these steps:
+1) Create a View which inherits from `OpenFiscaAPI_BaseView`. This class requires one attribute named "variable_name" which must be a Variable contained in the Django database.
+2) Specify the url for calling this View. You can specify any url. Following Django syntax, the result may look like
+   ``` 
+   from . import views
+   # other imports here
+   
+   urlpatterns = [
+    path("example_endpoint/", views.ExampleView.as_view()),
+   ]
+   ```
+
+An example of the [views.py](https://github.com/energy-savings-scheme/openfisca-djangoapi-template/blob/8d22f780b81904f817e1f0581298365857c9de67/app/api/views.py#L128) and [urls.py](https://github.com/energy-savings-scheme/openfisca-djangoapi-template/blob/8d22f780b81904f817e1f0581298365857c9de67/app/api/urls.py#L5) is provided (commented out) in this template repo.
+
 
 
 
