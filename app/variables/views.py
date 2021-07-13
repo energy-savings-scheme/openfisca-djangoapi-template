@@ -5,7 +5,7 @@ from rest_framework import generics, filters
 # from rest_framework.views import APIView
 
 
-from config.pagination import LargeResultsSetPagination
+# from config.pagination import LargeResultsSetPagination
 from variables.models import Variable
 from variables.serializers import VariableListSerializer, VariableChildrenSerializer
 
@@ -35,10 +35,6 @@ class VariablesList(generics.ListAPIView):
         query_set = Variable.objects.all()
         is_output = self.request.query_params.get("is_output", None)
         is_input = self.request.query_params.get("is_input", None)
-        majorCat = self.request.query_params.get("majorcat", None)
-        minorCat = self.request.query_params.get("minorcat", None)
-        schedule = self.request.query_params.get("schedule", None)
-        activity = self.request.query_params.get("activity", None)
 
         if is_input is not None:
             if is_input.lower() == "false":

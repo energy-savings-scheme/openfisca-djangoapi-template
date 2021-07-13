@@ -32,9 +32,6 @@ class VariableListSerializer(serializers.ModelSerializer):
 
     def get_default_value(self, obj):
         if obj.value_type == "Int":
-            print(obj.name)
-            print(obj.default_value, type(obj.default_value))
-
             return int(obj.default_value)
 
         if obj.value_type == "Float":
