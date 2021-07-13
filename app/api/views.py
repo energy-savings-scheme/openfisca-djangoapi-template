@@ -2,7 +2,7 @@ import json
 import requests
 
 from django.conf import settings
-
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.exceptions import APIException
 from rest_framework.generics import CreateAPIView
@@ -56,9 +56,7 @@ class OpenFiscaAPI_BaseView(CreateAPIView):
 
         response = self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(
-            response, status=status.HTTP_201_CREATED, headers=headers
-        )
+        return Response(response, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
         """This function is where we perform our business logic (i.e. call the OpenFisca `POST /calculate` endpoint)
@@ -77,11 +75,8 @@ class OpenFiscaAPI_BaseView(CreateAPIView):
             payload_user[key] = {str(period): userInput[key]}
 
         payload_base = {
-            "buildings": {
-                "building_1": payload_user},
-            "persons": {
-                "person1": {}
-            }
+            "buildings": {"building_1": payload_user},
+            "persons": {"person1": {}},
         }
 
         try:
@@ -126,4 +121,9 @@ class OpenFiscaAPI_BaseView(CreateAPIView):
         # Finally - handle success!
         if resp.status_code in [200, 201]:
             response = resp.json()
-            return response['buildings']['building_1']
+            return response["buildings"]["building_1"]
+
+
+# @extend_schema(description="""Enter custom description here""")
+# class ExampleView(OpenFiscaAPI_BaseView):
+#     variable_name = "<enter variable name as per OpenFisca here>"

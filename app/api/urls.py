@@ -1,6 +1,6 @@
-from django.urls import include, path
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path("ess/", include(("api.ess.urls", "ess"), namespace="ess")),
-    path("pdrs/", include(("api.pdrs.urls", "pdrs"), namespace="pdrs")),
+    # path("example_endpoint/", views.ExampleView.as_view()),
 ]
