@@ -29,8 +29,7 @@ For each variable, one can display the entire dependency graph by searching thro
 
 One could use this database to further annotate variable attributes (e.g. making them more readable with an alias, regulation reference or other data structure of a particular legislation) before serving them to a frontend UI.
 
-You can download this branch of Openfisca Core to enable annotating metadata and regulation reference in your OpenFisca Repo directly. [Reference Github Openfisca core metadata tag version](http://github.com/..) #TODO
-#TODO [reference to regulation reference branch for openfisca core?](#)
+You can download [add-variable-metadata branch](https://github.com/openfisca/openfisca-core/tree/add-variable-metadata) of Openfisca Core to enable annotating metadata in your OpenFisca Repo directly. 
 
 Here is an example of a metadata tag, consisting of three attributes, they are `"variable-type"`, either input, output or intermediary; `"alias"`, derived from the variable name by removing underscores; `"input_offspring"`, a list of all input dependencies, can be conveniently rendered in an UI for user input.
 
